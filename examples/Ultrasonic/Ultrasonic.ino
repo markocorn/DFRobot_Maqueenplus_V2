@@ -1,14 +1,12 @@
 /*!
  * @file patrol.ino
  * @brief MaqueenPlus avoid obstacles
- * @n When the distance between MaqueenPlus and obstacle ahead is less than 20cm, MaqueenPlus draws back to avoid it
- *
+ * @details When the distance between MaqueenPlus and obstacle ahead is less than 20cm, MaqueenPlus draws back to avoid it
  * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @licence      The MIT License (MIT)
- * @author       [Tang](jie.tang@dfrobot.com)
- * @version      V1.0
- * @date         2020-09-15
- * @get         from https://www.dfrobot.com
+ * @license      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @date         2021-09-27
  * @url         https://github.com/DFRobot/DFRobot_MaqueenPlus
  */
 
@@ -25,18 +23,18 @@ void setup() {
   }
   Serial.println("I2C initialization success");
   //Set RGB led color of MaqueenPlus 
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.YELLOW);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eYELLOW);
 }
 
 void loop() {
   //Receive the distance returned by ultrasoinc sensor
-  uint8_t distance  = MaqueenPlus.ultraSonic(MaqueenPlus.P0, MaqueenPlus.P1);
+  uint8_t distance  = MaqueenPlus.ultraSonic(MaqueenPlus.eP0, MaqueenPlus.eP1);
 
   if(distance < 20 && distance != 0){
-    MaqueenPlus.motorControl(MaqueenPlus.LEFT, MaqueenPlus.CCW, 160);
-    MaqueenPlus.motorControl(MaqueenPlus.RIGHT, MaqueenPlus.CCW, 50);
+    MaqueenPlus.motorControl(MaqueenPlus.eLEFT, MaqueenPlus.eCCW, 160);
+    MaqueenPlus.motorControl(MaqueenPlus.eRIGHT, MaqueenPlus.eCCW, 50);
     delay(500);
   }else{
-    MaqueenPlus.motorControl(MaqueenPlus.ALL, MaqueenPlus.CW, 50);
+    MaqueenPlus.motorControl(MaqueenPlus.eALL, MaqueenPlus.eCW, 50);
   }
 }

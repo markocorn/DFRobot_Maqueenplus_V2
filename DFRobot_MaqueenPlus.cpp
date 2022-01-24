@@ -1,4 +1,14 @@
-
+/*!
+ * @file DFRobot_MaqueenPlus.h
+ * @brief This is a library for MaqueenPlus from DFRobot
+ * @details This library can be used to control the corresponding sensors on MaqueenPlus to complete different projects and functions
+ * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @licence      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @eGDAte       2020-09-15
+ * @url          https://github.com/DFRobot/DFRobot_MaqueenPlus
+ */
 #include "DFRobot_MaqueenPlus.h"
 volatile uint32_t _tmp=0;
   volatile int _counter=0;
@@ -13,13 +23,13 @@ uint8_t DFRobot_MaqueenPlus::begin(void)
   }
   return -1;
 }
-void DFRobot_MaqueenPlus::PIDSwitch(PID state)
+void DFRobot_MaqueenPlus::PIDSwitch(ePID state)
 {
   uint8_t buf[1];
   buf[0] = state;
   writeReg(0X0A,buf,1);
 }
-void DFRobot_MaqueenPlus::motorControl(Position motor, Dir direction, uint8_t speed)
+void DFRobot_MaqueenPlus::motorControl(ePosition motor, eDir direction, uint8_t speed)
 {
   uint8_t buf[4];
   if(speed >= 240){
@@ -44,7 +54,7 @@ void DFRobot_MaqueenPlus::motorControl(Position motor, Dir direction, uint8_t sp
       writeReg(0x00, buf, 4);
   }
 }
-uint8_t DFRobot_MaqueenPlus::getSpeed(Position motor)
+uint8_t DFRobot_MaqueenPlus::getSpeed(ePosition motor)
 {
   uint8_t buf[4],speed;
   readReg(0, buf, 4);
@@ -65,7 +75,7 @@ uint8_t DFRobot_MaqueenPlus::getSpeed(Position motor)
   }
   return speed;
 }
-uint8_t DFRobot_MaqueenPlus::getDirection(Position motor)
+uint8_t DFRobot_MaqueenPlus::getDirection(ePosition motor)
 {
   uint8_t buf[4],dir;
   readReg(0, buf, 4);
@@ -78,7 +88,7 @@ uint8_t DFRobot_MaqueenPlus::getDirection(Position motor)
   }
   return dir;
 }
-float DFRobot_MaqueenPlus::getDistance(Position motor)
+float DFRobot_MaqueenPlus::getDistance(ePosition motor)
 {
   uint8_t buf[4];
   float dis;
@@ -93,7 +103,7 @@ float DFRobot_MaqueenPlus::getDistance(Position motor)
   DBG(dis);
   return dis;
 }
-void DFRobot_MaqueenPlus::clearDistance(Position motor)
+void DFRobot_MaqueenPlus::clearDistance(ePosition motor)
 {
   
   switch(motor){
@@ -117,7 +127,7 @@ void DFRobot_MaqueenPlus::clearDistance(Position motor)
     writeReg(0x04, buf2, 4);
   }
 }
-uint8_t DFRobot_MaqueenPlus::getPatrol(Patrol sensor)
+uint8_t DFRobot_MaqueenPlus::getPatrol(ePatrol sensor)
 {
   uint8_t buf[1],state;
   readReg(0x1D, buf, 1);
@@ -145,7 +155,7 @@ uint8_t DFRobot_MaqueenPlus::getPatrol(Patrol sensor)
   }
   return state;
 }
-uint16_t DFRobot_MaqueenPlus::getGrayscale(Patrol senser)
+uint16_t DFRobot_MaqueenPlus::getGrayscale(ePatrol senser)
 {
   uint8_t buf[12],patrol_AD;
   readReg(0x1E, buf, 12);
@@ -173,7 +183,7 @@ uint16_t DFRobot_MaqueenPlus::getGrayscale(Patrol senser)
   }
   return patrol_AD;
 } 
-void DFRobot_MaqueenPlus::setRGB(Position light, Color color)
+void DFRobot_MaqueenPlus::setRGB(ePosition light, eColor color)
 {
   uint8_t buf[2];
   switch(light){
@@ -191,7 +201,7 @@ void DFRobot_MaqueenPlus::setRGB(Position light, Color color)
       writeReg(0x0B, buf, 2);
   }
 }
-void DFRobot_MaqueenPlus::servoControl(Servo servo, uint8_t angle)
+void DFRobot_MaqueenPlus::servoControl(eServo servo, uint8_t angle)
 {
   uint8_t buf[1];
   switch(servo){
@@ -208,7 +218,7 @@ void DFRobot_MaqueenPlus::servoControl(Servo servo, uint8_t angle)
       writeReg(0x16, buf, 1);
   }
 }
-uint8_t DFRobot_MaqueenPlus::ultraSonic(Pin trig, Pin echo)
+uint8_t DFRobot_MaqueenPlus::ultraSonic(ePin trig, ePin echo)
 {
   uint16_t d=0;
 	_echoPin = echo;

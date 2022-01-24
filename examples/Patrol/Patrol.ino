@@ -1,14 +1,12 @@
 /*!
  * @file patrol.ino
  * @brief Complete the line-tracking using the MaqueenPlus line-tracking sensor 
- * @n Maqueen Plus follows the black lines on the map
- *
+ * @details Maqueen Plus follows the black lines on the map
  * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @licence      The MIT License (MIT)
- * @author       [Tang](jie.tang@dfrobot.com)
- * @version      V1.0
- * @date         2020-09-15
- * @get         from https://www.dfrobot.com
+ * @license      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @date         2021-09-27
  * @url         https://github.com/DFRobot/DFRobot_MaqueenPlus
  */
 
@@ -25,25 +23,25 @@ void setup() {
   }
   Serial.println("I2C initialization success");
   //Set RGB led color of MaqueenPlus 
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.YELLOW);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eYELLOW);
 }
 
 void loop() {
-  if(MaqueenPlus.getPatrol(MaqueenPlus.L2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.L1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.R1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.R2) == 0){
-    MaqueenPlus.motorControl(MaqueenPlus.ALL, MaqueenPlus.CW, 50); 
+  if(MaqueenPlus.getPatrol(MaqueenPlus.eL2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.eL1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.eR1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.eR2) == 0){
+    MaqueenPlus.motorControl(MaqueenPlus.eALL, MaqueenPlus.eCW, 50); 
   }else{
-    if(MaqueenPlus.getPatrol(MaqueenPlus.L2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.L1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.R2) == 1){
-      MaqueenPlus.motorControl(MaqueenPlus.LEFT, MaqueenPlus.CW, 160);
-      MaqueenPlus.motorControl(MaqueenPlus.RIGHT, MaqueenPlus.CW, 50);
-    }else if(MaqueenPlus.getPatrol(MaqueenPlus.L2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.L1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R2) == 1){
-      MaqueenPlus.motorControl(MaqueenPlus.LEFT, MaqueenPlus.CW, 200);
-      MaqueenPlus.motorControl(MaqueenPlus.RIGHT, MaqueenPlus.CW, 50);
-    }if(MaqueenPlus.getPatrol(MaqueenPlus.L2) == 1 &&  MaqueenPlus.getPatrol(MaqueenPlus.L1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.R1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R2) == 0){
-      MaqueenPlus.motorControl(MaqueenPlus.LEFT, MaqueenPlus.CW, 50);
-      MaqueenPlus.motorControl(MaqueenPlus.RIGHT, MaqueenPlus.CW, 160);
-    }else if(MaqueenPlus.getPatrol(MaqueenPlus.L2) == 1 &&  MaqueenPlus.getPatrol(MaqueenPlus.L1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.R2) == 0){
-      MaqueenPlus.motorControl(MaqueenPlus.LEFT, MaqueenPlus.CW, 50);
-      MaqueenPlus.motorControl(MaqueenPlus.RIGHT, MaqueenPlus.CW, 200);
+    if(MaqueenPlus.getPatrol(MaqueenPlus.eL2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.eL1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.eR2) == 1){
+      MaqueenPlus.motorControl(MaqueenPlus.eLEFT, MaqueenPlus.eCW, 160);
+      MaqueenPlus.motorControl(MaqueenPlus.eRIGHT, MaqueenPlus.eCW, 50);
+    }else if(MaqueenPlus.getPatrol(MaqueenPlus.eL2) == 0 &&  MaqueenPlus.getPatrol(MaqueenPlus.eL1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR2) == 1){
+      MaqueenPlus.motorControl(MaqueenPlus.eLEFT, MaqueenPlus.eCW, 200);
+      MaqueenPlus.motorControl(MaqueenPlus.eRIGHT, MaqueenPlus.eCW, 50);
+    }if(MaqueenPlus.getPatrol(MaqueenPlus.eL2) == 1 &&  MaqueenPlus.getPatrol(MaqueenPlus.eL1) == 1 && MaqueenPlus.getPatrol(MaqueenPlus.eR1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR2) == 0){
+      MaqueenPlus.motorControl(MaqueenPlus.eLEFT, MaqueenPlus.eCW, 50);
+      MaqueenPlus.motorControl(MaqueenPlus.eRIGHT, MaqueenPlus.eCW, 160);
+    }else if(MaqueenPlus.getPatrol(MaqueenPlus.eL2) == 1 &&  MaqueenPlus.getPatrol(MaqueenPlus.eL1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR1) == 0 && MaqueenPlus.getPatrol(MaqueenPlus.eR2) == 0){
+      MaqueenPlus.motorControl(MaqueenPlus.eLEFT, MaqueenPlus.eCW, 50);
+      MaqueenPlus.motorControl(MaqueenPlus.eRIGHT, MaqueenPlus.eCW, 200);
     }
   }
 }

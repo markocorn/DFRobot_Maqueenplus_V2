@@ -1,14 +1,12 @@
 /*!
  * @file patrol.ino
  * @brief MaqueenPlus RGB LEDs light up in different colors
- * @n MaqueenPlus RGB LEDs light up in differernt colors repeatedly
- *
+ * @details MaqueenPlus RGB LEDs light up in differernt colors repeatedly
  * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @licence      The MIT License (MIT)
- * @author       [Tang](jie.tang@dfrobot.com)
- * @version      V1.0
- * @date         2020-09-15
- * @get         from https://www.dfrobot.com
+ * @license      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @date         2021-09-27
  * @url         https://github.com/DFRobot/DFRobot_MaqueenPlus
  */
 
@@ -27,20 +25,20 @@ void setup() {
 }
 
 void loop() {
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.RED);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eRED);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.GREEN);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eGREEN);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.BLUE);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eBLUE);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.YELLOW);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eYELLOW);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.PINK);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.ePINK);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.CYAN);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eCYAN);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.WHITH);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eWHITH);
   delay(100);
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.PUT);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.ePUT);
   delay(100);
 }

@@ -1,14 +1,12 @@
 /*!
  * @file patrol.ino
  * @brief Get the returned data of MaqueenPlus 
- * @n Serial port print the returned data of MaqueenPlus 
- *
+ * @details Serial port print the returned data of MaqueenPlus 
  * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @licence      The MIT License (MIT)
- * @author       [Tang](jie.tang@dfrobot.com)
- * @version      V1.0
- * @date         2020-09-15
- * @get         from https://www.dfrobot.com
+ * @license      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @date         2021-09-27
  * @url         https://github.com/DFRobot/DFRobot_MaqueenPlus
  */
 
@@ -25,8 +23,8 @@ void setup() {
   }
   Serial.println("I2C initialization success");
   //Set RGB led color of MaqueenPlus 
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.YELLOW);
-  MaqueenPlus.motorControl(MaqueenPlus.ALL, MaqueenPlus.CW, 100);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eYELLOW);
+  MaqueenPlus.motorControl(MaqueenPlus.eALL, MaqueenPlus.eCW, 100);
 }
 
 void loop() {
@@ -35,35 +33,35 @@ void loop() {
   Serial.println(MaqueenPlus.getVersion());
   Serial.println("--------------------");
   Serial.print("Speed_L:");
-  Serial.println(MaqueenPlus.getSpeed(MaqueenPlus.LEFT));
+  Serial.println(MaqueenPlus.getSpeed(MaqueenPlus.eLEFT));
   Serial.print("Speed_R:");
-  Serial.println(MaqueenPlus.getSpeed(MaqueenPlus.RIGHT));
+  Serial.println(MaqueenPlus.getSpeed(MaqueenPlus.eRIGHT));
   Serial.println("--------------------");
   Serial.print("Direction_L:");
-  Serial.println(MaqueenPlus.getDirection(MaqueenPlus.LEFT));
+  Serial.println(MaqueenPlus.getDirection(MaqueenPlus.eLEFT));
   Serial.print("Direction_R:");
-  Serial.println(MaqueenPlus.getDirection(MaqueenPlus.RIGHT));
+  Serial.println(MaqueenPlus.getDirection(MaqueenPlus.eRIGHT));
   Serial.println("--------------------");
   Serial.print("Distance_L:");
-  Serial.println(MaqueenPlus.getDistance(MaqueenPlus.LEFT));
+  Serial.println(MaqueenPlus.getDistance(MaqueenPlus.eLEFT));
   Serial.print("Distance_R:");
-  Serial.println(MaqueenPlus.getDistance(MaqueenPlus.RIGHT));
+  Serial.println(MaqueenPlus.getDistance(MaqueenPlus.eRIGHT));
   Serial.println("--------------------");
   Serial.print("Grayscale_L1:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.L1));
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eL1));
   Serial.print("Grayscale_L2:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.L2));
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eL2));
   Serial.print("Grayscale_L3:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.L3));
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eL3));
   Serial.print("Grayscale_R1:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.R1));
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eR1));
   Serial.print("Grayscale_R2:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.R2));
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eR2));
   Serial.print("Grayscale_R3:");
-  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.R3));
-  if(MaqueenPlus.getDistance(MaqueenPlus.LEFT) >= 20 || MaqueenPlus.getDistance(MaqueenPlus.RIGHT) >= 20){
+  Serial.println(MaqueenPlus.getGrayscale(MaqueenPlus.eR3));
+  if(MaqueenPlus.getDistance(MaqueenPlus.eLEFT) >= 20 || MaqueenPlus.getDistance(MaqueenPlus.eRIGHT) >= 20){
     //clear the revolutions of wheel
-    MaqueenPlus.clearDistance(MaqueenPlus.ALL);
+    MaqueenPlus.clearDistance(MaqueenPlus.eALL);
   }
   delay(1000);
 }

@@ -1,14 +1,12 @@
 /*!
  * @file patrol.ino
  * @brief Control servo via the servo port on MaqueenPlus 
- * @n Servo connected to port S1 of MaqueenPlus rotates from 0 to 180 degrees, and then back to 0.
- *     
+ * @details Servo connected to port S1 of MaqueenPlus rotates from 0 to 180 degrees, and then back to 0. 
  * @copyright    Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- * @licence      The MIT License (MIT)
- * @author       [Tang](jie.tang@dfrobot.com)
- * @version      V1.0
- * @date         2020-09-15
- * @get         from https://www.dfrobot.com
+ * @license      The MIT License (MIT)
+ * @author       [TangJie](jie.tang@dfrobot.com)
+ * @version      V1.0.1
+ * @date         2021-09-27
  * @url         https://github.com/DFRobot/DFRobot_MaqueenPlus
  */
 
@@ -25,16 +23,16 @@ void setup() {
   }
   Serial.println("I2C initialization success");
   //Set RGB led color of MaqueenPlus 
-  MaqueenPlus.setRGB(MaqueenPlus.ALL, MaqueenPlus.YELLOW);
+  MaqueenPlus.setRGB(MaqueenPlus.eALL, MaqueenPlus.eYELLOW);
 }
 
 void loop() {
   for(uint8_t i=0; i<180; i++){
-    MaqueenPlus.servoControl(MaqueenPlus.S1, i);
+    MaqueenPlus.servoControl(MaqueenPlus.eS1, i);
     delay(100);
   }
   for(uint8_t i=180; i>0; i--){
-    MaqueenPlus.servoControl(MaqueenPlus.S1, i);
+    MaqueenPlus.servoControl(MaqueenPlus.eS1, i);
     delay(100);
   }
 }
