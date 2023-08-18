@@ -124,12 +124,25 @@ public:
    * @brief Constructor
    * @param pWire  I2C object
    * @param address I2C address
+   * @param pSDA pin number for SDA (default: 22)
+   * @param pSCL pin number for SCL (default: 21)
    * @return None 
    */
-  DFRobot_MaqueenPlus(TwoWire *pWire = &Wire, uint8_t address = 0x10)
+  DFRobot_MaqueenPlus(TwoWire *pWire = &Wire, uint8_t address = 0x10, uint8_t pSDA = 21, uint8_t pSCL = 22)
   {
     _pWire = pWire;
     _address = address;
+	_pSDA = pSDA;
+	_pSCL = pSCL;
+  };
+  
+  // Overloaded constructor only for pSDA and pSCL
+  DFRobot_MaqueenPlus(uint8_t pSDA, uint8_t pSCL)
+  {
+    _pWire = &Wire;
+    _address = 0x10;
+    _pSDA = pSDA;
+    _pSCL = pSCL;
   };
 
  /**
@@ -255,6 +268,8 @@ private:
   uint16_t _pulseWidth = 0;
   uint16_t _irCode = 0x00;
   uint32_t _duration;
+  uint8_t _pSDA = 21;
+  uint8_t _pSCL = 22;
  /**
   * @fn myPulseIn
   * @brief  Get level change time

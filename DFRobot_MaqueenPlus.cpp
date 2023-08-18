@@ -17,7 +17,7 @@ volatile uint32_t _tmp=0;
 uint8_t DFRobot_MaqueenPlus::begin(void)
 {
   uint8_t buf[2];
-  _pWire->begin();
+  _pWire->begin(_pSDA,_pSCL);
   if(readReg(0, buf, 2) == 2){
     return 0;
   }
@@ -100,7 +100,7 @@ float DFRobot_MaqueenPlus::getDistance(ePosition motor)
     default:
       dis = (float)(((buf[2]<<8)|buf[3]) * 10)/900;
   }
-  DBG(dis);
+  //DBG(dis);
   return dis;
 }
 void DFRobot_MaqueenPlus::clearDistance(ePosition motor)
